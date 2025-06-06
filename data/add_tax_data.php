@@ -2,12 +2,16 @@
 
 include '../conn.php';
 
-$date = date("Y-m-d");
-$ful_name = $_POST["full_name"];
-$mobile = $_POST["mobile"];
-$email = $_POST["email"];
-$sql = "INSERT INTO user(full_name,mobile,email,reg_date) "
-    . "VALUES(\"$ful_name\",\"$mobile\",\"$email\",\"$date\")";
+$tin_number = $_POST("tin_number");
+$income = $_POST["income"];
+$expences = $_POST["expences"];
+$tax_amount = $_POST["tax_amount"];
+$descripyion = $_POST["descripyion"];
+$image = $_POST["screenshot"];
+$pdf = $_POST["pdf_file"];
+$exel = $_POST["excel_file"];
+$sql = "INSERT INTO user(tin_number,income,expences,tax_amount,descripyion,images,pdfs,exels) "
+    . "VALUES(\"$tin_number\",\"$income\",\"$email\",\"$date\")";
 
 if (mysqli_query($con, $sql)) {
     $last_id = mysqli_insert_id($con);

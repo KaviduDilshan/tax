@@ -14,35 +14,43 @@
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup data_enter">
-          <form action="form.html" class="sign-in-form">
+
+          <form action="data/add_user_data.php" method="post" class="sign-in-form">
             <h2 class="title">Sign in</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Full name" required />
+              <input type="text" name="full_name" placeholder="Full name" required />
             </div>
             <div class="input-field">
               <i class="fas fa-mobile-alt"></i>
-              <input type="number" placeholder="Mobile number" required />
+              <input type="text" name="mobile" placeholder="Mobile number" oninput="this.value = this.value.slice(0, 10)" required />
             </div>
             <div class="input-field">
               <i class="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" required/>
+              <input type="email" name="email" placeholder="Email" required/>
             </div>
-            <div class="input-field">
-              <i class="fas fa-calendar-alt"></i> 
-              <input type="date" name="date" placeholder="date" required />
+            </br></br>
+            <div>
+              <input type="submit" name="user_type" value="Person" class="btn solid" />
+              <input type="submit" name="user_type" value="Partnership" class="btn solid" />
+              <input type="submit" name="user_type" value="Coparate" class="btn solid" />
             </div>
+            </br>
+            <p class="social-text">Simple. Fast. Smart tax & accounts.</p>
+            </br>
+            <div>
+              <p class="company">Tritcal Internationa PVT.LTD</p>
+            </div>
+          </form>
 
-            <input type="submit" value="NEXT->" class="btn solid" />
-            <p class="social-text">Simple. Fast. Smart tax & accounts.</p>  
-          </form>         
-        </div>
+        </div>             
       </div>
+    </div>
 
       <div class="panels-container">
         <div class="panel left-panel">
           <div class="content">
-            <h2>HAT ACCOUNTANS</h2>
+            <h2>HAT ACCOUNTANTS</h2>
             <h3>welcome!</h3>    
           </div>
         </div>
