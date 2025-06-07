@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 05, 2025 at 01:38 PM
+-- Generation Time: Jun 07, 2025 at 06:00 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -28,12 +28,16 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `tax` (
-  `c_id` int(11) NOT NULL,
+  `t_id` int(11) NOT NULL,
+  `c_id` int(11) NOT NULL DEFAULT 0,
   `tin_number` int(11) NOT NULL,
   `income` int(11) NOT NULL,
   `expences` int(11) NOT NULL,
   `tax_amount` int(11) NOT NULL,
-  `description` varchar(255) NOT NULL
+  `description` varchar(255) NOT NULL,
+  `images` varchar(255) DEFAULT NULL,
+  `pdfs` varchar(255) DEFAULT NULL,
+  `exels` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -47,8 +51,21 @@ CREATE TABLE `user` (
   `f_name` varchar(100) NOT NULL,
   `mobile` int(15) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `date` date DEFAULT NULL
+  `reg_date` date DEFAULT NULL,
+  `user_type` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`c_id`, `f_name`, `mobile`, `email`, `reg_date`, `user_type`) VALUES
+(1, '', 0, '', '2025-06-06', ''),
+(4, 'gfhgjnhgjn', 2147483647, 'dilshank404@gmail.com', '2025-06-06', ''),
+(5, 'gfhgjnhgjn', 2147483647, 'dilshank404@gmail.com', '2025-06-06', ''),
+(6, 'gihan', 1000000001, 'gi@gmil.com', '2025-06-06', ''),
+(7, 'gihan', 1000000001, 'gi@gmil.com', '2025-06-06', ''),
+(8, 'kavidu', 2147483647, 'dilshank404@gmail.com', '2025-06-06', 'Person');
 
 --
 -- Indexes for dumped tables
@@ -58,7 +75,7 @@ CREATE TABLE `user` (
 -- Indexes for table `tax`
 --
 ALTER TABLE `tax`
-  ADD PRIMARY KEY (`c_id`);
+  ADD PRIMARY KEY (`t_id`);
 
 --
 -- Indexes for table `user`
@@ -71,16 +88,10 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT for table `tax`
---
-ALTER TABLE `tax`
-  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
