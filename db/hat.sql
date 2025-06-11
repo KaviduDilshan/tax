@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2025 at 06:00 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Generation Time: Jun 11, 2025 at 08:20 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,7 +30,6 @@ SET time_zone = "+00:00";
 CREATE TABLE `tax` (
   `t_id` int(11) NOT NULL,
   `c_id` int(11) NOT NULL DEFAULT 0,
-  `tin_number` int(11) NOT NULL,
   `income` int(11) NOT NULL,
   `expences` int(11) NOT NULL,
   `tax_amount` int(11) NOT NULL,
@@ -38,7 +37,7 @@ CREATE TABLE `tax` (
   `images` varchar(255) DEFAULT NULL,
   `pdfs` varchar(255) DEFAULT NULL,
   `exels` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -48,24 +47,32 @@ CREATE TABLE `tax` (
 
 CREATE TABLE `user` (
   `c_id` int(11) NOT NULL,
-  `f_name` varchar(100) NOT NULL,
-  `mobile` int(15) NOT NULL,
-  `email` varchar(100) NOT NULL,
+  `f_name` varchar(255) DEFAULT NULL,
+  `mobile` varchar(15) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `reg_date` date DEFAULT NULL,
-  `user_type` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `tin_number` varchar(100) DEFAULT NULL,
+  `user_type` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`c_id`, `f_name`, `mobile`, `email`, `reg_date`, `user_type`) VALUES
-(1, '', 0, '', '2025-06-06', ''),
-(4, 'gfhgjnhgjn', 2147483647, 'dilshank404@gmail.com', '2025-06-06', ''),
-(5, 'gfhgjnhgjn', 2147483647, 'dilshank404@gmail.com', '2025-06-06', ''),
-(6, 'gihan', 1000000001, 'gi@gmil.com', '2025-06-06', ''),
-(7, 'gihan', 1000000001, 'gi@gmil.com', '2025-06-06', ''),
-(8, 'kavidu', 2147483647, 'dilshank404@gmail.com', '2025-06-06', 'Person');
+INSERT INTO `user` (`c_id`, `f_name`, `mobile`, `email`, `reg_date`, `tin_number`, `user_type`) VALUES
+(1, '', '0', '', '2025-06-06', NULL, 0),
+(4, 'gfhgjnhgjn', '2147483647', 'dilshank404@gmail.com', '2025-06-06', NULL, 0),
+(5, 'gfhgjnhgjn', '2147483647', 'dilshank404@gmail.com', '2025-06-06', NULL, 0),
+(6, 'gihan', '1000000001', 'gi@gmil.com', '2025-06-06', NULL, 0),
+(7, 'gihan', '1000000001', 'gi@gmil.com', '2025-06-06', NULL, 0),
+(8, 'kavidu', '2147483647', 'dilshank404@gmail.com', '2025-06-06', NULL, 0),
+(9, 'asdasd', '0', 'asdasd@wqeqwe.com', '2025-06-07', NULL, 0),
+(10, 'asdasd', '123123213', 'rajap.dinukad@gmail.com', '2025-06-07', NULL, 0),
+(11, 'Dinesh Rajapakshe', '0777959789', 'rajap.dinukad@gmail.com', '2025-06-07', '0121012', 1),
+(12, 'Dinesh Rajapakshe', '0777959789', 'rajap.dinukad@gmail.com', '2025-06-07', '0001212', 1),
+(13, 'Dinesh Rajapakshe', '7777777777', 'rajap.dinukad@gmail.com', '2025-06-08', '0121012', 1),
+(14, 'Dinesh Rajapakshe', '7777777777', 'rajap.dinukad@gmail.com', '2025-06-08', '0121012', 1),
+(15, 'Dinesh Rajapakshe', '3132131312', 'rajap.dinukad@gmail.com', '2025-06-08', '0121012', 1);
 
 --
 -- Indexes for dumped tables
@@ -91,7 +98,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
