@@ -16,11 +16,11 @@
                 <div class="card-body">
                 <div>
                     <h3>Thank You !</h3>
-                    <p>Your finished your upload.</p>
+                    <p>Your submition has been sent.</p>
 
                     <div class="progress">
                     
-                    <a href="#" class="btn-first">Ok</a>
+                    <a href="index.php" class="btn-first">Ok</a>
                     </div>
                 </div>
 

@@ -46,7 +46,7 @@ section .card {
   place-items: center;
   text-align: center;
   position: relative;
-  box-shadow: 0.063em 0.75em 1.563em rgba(0, 0, 0, 0.78);
+  box-shadow: 0.063em 0.75em 1.563em rgba(35, 32, 201, 0.78);
   border-radius: 1rem;
 }
 @media screen and (min-width: 33.75rem) {
@@ -102,6 +102,7 @@ section .card-body h3 {
   margin-top: 0.625em;
   margin-bottom: 0.5em;
   font-weight: 600;
+  font-size: 30px;
 }
 section .card-body p {
   text-align: center;
@@ -153,7 +154,7 @@ section .card .progress span:first-of-type {
 }
 section .card .btn-first,
 section .card .btn-second {
-  background: #222127;
+  background: #123f61;
   color: #fff;
   border-radius: 0.25em;
   padding: 0.5rem 1.5rem;
@@ -170,7 +171,7 @@ section .card .btn-second {
   margin-left: 2em;
 }
 section .blue {
-  background: radial-gradient(ellipse at right top, #00458f8f 0%, #151419 45%, #151419 100%);
+  background: linear-gradient(90deg, #1CB5E0 0%, #000851 100%);
   opacity: 0.95;
   transition: opacity 0.25s ease-in;
 }
@@ -185,7 +186,7 @@ section .blue:before {
 }
 section .blue .progress-bar:after {
   width: 68%;
-  background: #5a81ff;
+  background: #142e83;
   background: linear-gradient(90deg, #1d1da3 0%, #4242cf 60%, #5a81ff 100%);
 }
 section .blue .btn-first {
@@ -200,7 +201,7 @@ section .blue .btn-first {
   }
 }
 section .blue .btn-first:hover {
-  background: #5a81ff;
+  background: #184ab4;
 }
 section .green {
   background: radial-gradient(ellipse at right top, #107667ed 0%, #151419 47%, #151419 100%);
@@ -266,3 +267,4 @@ section .red .btn-second:hover {
     align-content: center;
     text-align: center;
 } */
+

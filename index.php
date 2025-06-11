@@ -7,7 +7,7 @@
       src="https://kit.fontawesome.com/64d58efce2.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="form.css" />
+    <link rel="stylesheet" href="assets/css/form.css" />
     <title>Sign in & Sign up Form</title>
   </head>
   <body>
