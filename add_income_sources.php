@@ -218,6 +218,7 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
             } else {
                 past_in5 = 0;
             }
+
             var calc = past_in1 + past_in2 + past_in3 + past_in4 + past_in5;
             $("#past_er").val(calc.toFixed(2));
             if (past_in1 >= 1200000) {
@@ -277,104 +278,104 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
                 }
                 var apitval = tax + tax2 + tax3 + tax4 + tax5 + tax6;
                 $("#past_apit").val(apitval.toFixed(2));
-
-                if (past_in1 > 1200000) {
-                    var tax_pay = 1200000;
-                } else {
-                    var tax_pay = 0;
-                }
-
-                var ceb = parseFloat($('#ceb').val());
-                if (ceb = 1) {
-                    var solar_pay = 600000;
-                } else {
-                    var solar_pay = 0;
-                }
-
-                var past_de1 = parseFloat($('#past_de1').val());
-                if (!isNaN(past_de1)) {
-                    past_de1 = past_de1;
-                } else {
-                    past_de1 = 0;
-                }
-                var r = (past_in4 - past_de1) * (25 / 100);
-                var tot = calc - (tax_pay + solar_pay + r);
-
-                var past_wht = parseFloat($("#past_wht").val());
-                var past_it = parseFloat($('#past_it').val());
-                if (!isNaN(past_wht)) {
-                    past_wht = past_wht;
-                } else {
-                    past_wht = 0;
-                }
-                if (!isNaN(past_it)) {
-                    past_it = past_it;
-                } else {
-                    past_it = 0;
-                }
-
-                if (tot <= 500000) {
-                    var dtax = tot * (6 / 100);
-                    var dtax2 = 0;
-                    var dtax3 = 0;
-                    var dtax4 = 0;
-                    var dtax5 = 0;
-                    var dtax6 = 0;
-                } else if (tot > 500000 && tot <= 1000000) {
-                    var dtax = 500000 * (6 / 100);
-                    var balance = tot - 500000;
-                    var dtax2 = balance * (12 / 100);
-                    var dtax3 = 0;
-                    var dtax4 = 0;
-                    var dtax5 = 0;
-                    var dtax6 = 0;
-                } else if (tot > 1000000 && tot <= 1500000) {
-                    var dtax = 500000 * (6 / 100);
-                    var dtax2 = 500000 * (12 / 100);
-                    var balance = tot - 1000000;
-                    var dtax3 = balance * (18 / 100);
-                    var dtax4 = 0;
-                    var dtax5 = 0;
-                    var dtax6 = 0;
-                } else if (tot > 1500000 && tot <= 2000000) {
-                    var dtax = 500000 * (6 / 100);
-                    var dtax2 = 500000 * (12 / 100);
-                    var dtax3 = 500000 * (18 / 100);
-                    var balance = tot - 1500000;
-                    var dtax4 = balance * (24 / 100);
-                    var dtax5 = 0;
-                    var dtax6 = 0;
-                } else if (tot > 2000000 && tot <= 2500000) {
-                    var dtax = 500000 * (6 / 100);
-                    var dtax2 = 500000 * (12 / 100);
-                    var dtax3 = 500000 * (18 / 100);
-                    var dtax4 = 500000 * (24 / 100);
-                    var balance = tot - 2000000;
-                    var dtax5 = balance * (30 / 100);
-                    var dtax6 = 0;
-                } else if (tot > 2500000) {
-                    var dtax = 500000 * (6 / 100);
-                    var dtax2 = 500000 * (12 / 100);
-                    var dtax3 = 500000 * (18 / 100);
-                    var dtax4 = 500000 * (24 / 100);
-                    var dtax5 = 500000 * (30 / 100);
-                    var balance = tot - 2500000;
-                    var dtax6 = balance * (36 / 100);
-                }
-
-                var tax_after_ded = dtax + dtax2 + dtax3 + dtax4 + dtax5 + dtax6;
-                $("#past_tot_hi").val(tax_after_ded.toFixed(2));
-
-                var payble = tax_after_ded - (apitval + past_wht + past_it);
-                if (payble > 0) {
-                    $("#past_tot").val(payble.toFixed(2));
-                } else {
-                    var ttt = 0;
-                    $("#past_tot").val(ttt.toFixed(2));
-                }
             } else {
                 var apitval = 0;
                 $("#past_apit").val(apitval.toFixed(2));
+            }
+            if (calc > 1200000) {
+                var tax_pay = 1200000;
+            } else {
+                var tax_pay = 0;
+            }
+
+            var ceb = parseFloat($('#ceb').val());
+            if (ceb = 1) {
+                var solar_pay = 600000;
+            } else {
+                var solar_pay = 0;
+            }
+
+            var past_de1 = parseFloat($('#past_de1').val());
+            if (!isNaN(past_de1)) {
+                past_de1 = past_de1;
+            } else {
+                past_de1 = 0;
+            }
+
+            var r = (past_in4 - past_de1) * (25 / 100);
+            var tot = calc - (tax_pay + solar_pay + r);
+
+            var past_wht = parseFloat($("#past_wht").val());
+            var past_it = parseFloat($('#past_it').val());
+            if (!isNaN(past_wht)) {
+                past_wht = past_wht;
+            } else {
+                past_wht = 0;
+            }
+            if (!isNaN(past_it)) {
+                past_it = past_it;
+            } else {
+                past_it = 0;
+            }
+
+            if (tot <= 500000) {
+                var dtax = tot * (6 / 100);
+                var dtax2 = 0;
+                var dtax3 = 0;
+                var dtax4 = 0;
+                var dtax5 = 0;
+                var dtax6 = 0;
+            } else if (tot > 500000 && tot <= 1000000) {
+                var dtax = 500000 * (6 / 100);
+                var balance = tot - 500000;
+                var dtax2 = balance * (12 / 100);
+                var dtax3 = 0;
+                var dtax4 = 0;
+                var dtax5 = 0;
+                var dtax6 = 0;
+            } else if (tot > 1000000 && tot <= 1500000) {
+                var dtax = 500000 * (6 / 100);
+                var dtax2 = 500000 * (12 / 100);
+                var balance = tot - 1000000;
+                var dtax3 = balance * (18 / 100);
+                var dtax4 = 0;
+                var dtax5 = 0;
+                var dtax6 = 0;
+            } else if (tot > 1500000 && tot <= 2000000) {
+                var dtax = 500000 * (6 / 100);
+                var dtax2 = 500000 * (12 / 100);
+                var dtax3 = 500000 * (18 / 100);
+                var balance = tot - 1500000;
+                var dtax4 = balance * (24 / 100);
+                var dtax5 = 0;
+                var dtax6 = 0;
+            } else if (tot > 2000000 && tot <= 2500000) {
+                var dtax = 500000 * (6 / 100);
+                var dtax2 = 500000 * (12 / 100);
+                var dtax3 = 500000 * (18 / 100);
+                var dtax4 = 500000 * (24 / 100);
+                var balance = tot - 2000000;
+                var dtax5 = balance * (30 / 100);
+                var dtax6 = 0;
+            } else if (tot > 2500000) {
+                var dtax = 500000 * (6 / 100);
+                var dtax2 = 500000 * (12 / 100);
+                var dtax3 = 500000 * (18 / 100);
+                var dtax4 = 500000 * (24 / 100);
+                var dtax5 = 500000 * (30 / 100);
+                var balance = tot - 2500000;
+                var dtax6 = balance * (36 / 100);
+            }
+
+            var tax_after_ded = dtax + dtax2 + dtax3 + dtax4 + dtax5 + dtax6;
+            $("#past_tot_hi").val(tax_after_ded.toFixed(2));
+
+            var payble = tax_after_ded - (apitval + past_wht + past_it);
+            if (payble > 0) {
+                $("#past_tot").val(payble.toFixed(2));
+            } else {
+                var ttt = 0;
+                $("#past_tot").val(ttt.toFixed(2));
             }
         });
         // -----------------------------------------------------------------------------------
@@ -458,101 +459,102 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
                 var apitval2 = ntax + ntax3 + ntax4 + ntax5 + ntax6;
                 $("#new_apit").val(apitval2.toFixed(2));
 
-                if (new_in1 > 1800000) {
-                    var ntax_pay = 1800000;
-                } else {
-                    var ntax_pay = 0;
-                }
-
-                var nceb = parseFloat($('#ceb_new').val());
-                if (nceb = 1) {
-                    var nsolar_pay = 600000;
-                } else {
-                    var nsolar_pay = 0;
-                }
-
-                var new_de1 = parseFloat($('#new_de1').val());
-                if (!isNaN(new_de1)) {
-                    new_de1 = new_de1;
-                } else {
-                    new_de1 = 0;
-                }
-                var nr = (new_in4 - new_de1) * (25 / 100);
-                var ntot = calc2 - (ntax_pay + nsolar_pay + nr);
-
-                var new_wht = parseFloat($("#new_wht").val());
-                var new_it = parseFloat($('#new_it').val());
-                if (!isNaN(new_wht)) {
-                    new_wht = new_wht;
-                } else {
-                    new_wht = 0;
-                }
-                if (!isNaN(new_it)) {
-                    new_it = new_it;
-                } else {
-                    new_it = 0;
-                }
-
-                if (ntot <= 1000000) {
-                    var dntax = ntot * (6 / 100);
-                    var dntax3 = 0;
-                    var dntax4 = 0;
-                    var dntax5 = 0;
-                    var dntax6 = 0;
-                } else if (ntot > 1000000 && ntot <= 1500000) {
-                    var dntax = 1000000 * (6 / 100);
-                    var balance2 = ntot - 1000000;
-                    var dntax3 = balance2 * (18 / 100);
-                    var dntax4 = 0;
-                    var dntax5 = 0;
-                    var dntax6 = 0;
-                } else if (ntot > 1500000 && ntot <= 2000000) {
-                    var dntax = 1000000 * (6 / 100);
-                    var dntax3 = 500000 * (18 / 100);
-                    var balance2 = ntot - 1500000;
-                    var dntax4 = balance2 * (24 / 100);
-                    var dntax5 = 0;
-                    var dntax6 = 0;
-                } else if (ntot > 2000000 && ntot <= 2500000) {
-                    var dntax = 1000000 * (6 / 100);
-                    var dntax3 = 500000 * (18 / 100);
-                    var dntax4 = 500000 * (24 / 100);
-                    var balance2 = ntot - 2000000;
-                    var dntax5 = balance2 * (30 / 100);
-                    var dntax6 = 0;
-                } else if (ntot > 2500000) {
-                    var dntax = 1000000 * (6 / 100);
-                    var dntax3 = 500000 * (18 / 100);
-                    var dntax4 = 500000 * (24 / 100);
-                    var dntax5 = 500000 * (30 / 100);
-                    var balance2 = ntot - 2500000;
-                    var dntax6 = balance2 * (36 / 100);
-                }
-
-                var ntax_after_ded = dntax + dntax3 + dntax4 + dntax5 + dntax6;
-                var payble2 = ntax_after_ded - (apitval2 + new_wht + new_it)
-                if (payble2 > 0) {
-                    $("#new_tot").val(payble2.toFixed(2));
-                } else {
-                    var ttt = 0;
-                    $("#new_tot").val(ttt.toFixed(2));
-                }
-
-                var past_tot_hi = parseFloat($('#past_tot_hi').val());
-                if (!isNaN(past_tot_hi)) {
-                    past_tot_hi = past_tot_hi;
-                } else {
-                    past_tot_hi = 0;
-                }
-
-                $("#savings").val(past_tot_hi - ntax_after_ded.toFixed(2));
-                var prt = (past_tot_hi - ntax_after_ded) / (past_tot_hi / 100);
-                $("#savings_per").val(prt.toFixed(2));
-
             } else {
                 var apitval2 = 0;
                 $("#new_apit").val(apitval2.toFixed(2));
             }
+
+            if (new_in1 > 1800000) {
+                var ntax_pay = 1800000;
+            } else {
+                var ntax_pay = 0;
+            }
+
+            var nceb = parseFloat($('#ceb_new').val());
+            if (nceb = 1) {
+                var nsolar_pay = 600000;
+            } else {
+                var nsolar_pay = 0;
+            }
+
+            var new_de1 = parseFloat($('#new_de1').val());
+            if (!isNaN(new_de1)) {
+                new_de1 = new_de1;
+            } else {
+                new_de1 = 0;
+            }
+            var nr = (new_in4 - new_de1) * (25 / 100);
+            var ntot = calc2 - (ntax_pay + nsolar_pay + nr);
+
+            var new_wht = parseFloat($("#new_wht").val());
+            var new_it = parseFloat($('#new_it').val());
+            if (!isNaN(new_wht)) {
+                new_wht = new_wht;
+            } else {
+                new_wht = 0;
+            }
+            if (!isNaN(new_it)) {
+                new_it = new_it;
+            } else {
+                new_it = 0;
+            }
+
+            if (ntot <= 1000000) {
+                var dntax = ntot * (6 / 100);
+                var dntax3 = 0;
+                var dntax4 = 0;
+                var dntax5 = 0;
+                var dntax6 = 0;
+            } else if (ntot > 1000000 && ntot <= 1500000) {
+                var dntax = 1000000 * (6 / 100);
+                var balance2 = ntot - 1000000;
+                var dntax3 = balance2 * (18 / 100);
+                var dntax4 = 0;
+                var dntax5 = 0;
+                var dntax6 = 0;
+            } else if (ntot > 1500000 && ntot <= 2000000) {
+                var dntax = 1000000 * (6 / 100);
+                var dntax3 = 500000 * (18 / 100);
+                var balance2 = ntot - 1500000;
+                var dntax4 = balance2 * (24 / 100);
+                var dntax5 = 0;
+                var dntax6 = 0;
+            } else if (ntot > 2000000 && ntot <= 2500000) {
+                var dntax = 1000000 * (6 / 100);
+                var dntax3 = 500000 * (18 / 100);
+                var dntax4 = 500000 * (24 / 100);
+                var balance2 = ntot - 2000000;
+                var dntax5 = balance2 * (30 / 100);
+                var dntax6 = 0;
+            } else if (ntot > 2500000) {
+                var dntax = 1000000 * (6 / 100);
+                var dntax3 = 500000 * (18 / 100);
+                var dntax4 = 500000 * (24 / 100);
+                var dntax5 = 500000 * (30 / 100);
+                var balance2 = ntot - 2500000;
+                var dntax6 = balance2 * (36 / 100);
+            }
+
+            var ntax_after_ded = dntax + dntax3 + dntax4 + dntax5 + dntax6;
+            var payble2 = ntax_after_ded - (apitval2 + new_wht + new_it)
+            if (payble2 > 0) {
+                $("#new_tot").val(payble2.toFixed(2));
+            } else {
+                var ttt = 0;
+                $("#new_tot").val(ttt.toFixed(2));
+            }
+
+            var past_tot_hi = parseFloat($('#past_tot_hi').val());
+            if (!isNaN(past_tot_hi)) {
+                past_tot_hi = past_tot_hi;
+            } else {
+                past_tot_hi = 0;
+            }
+
+            $("#savings").val(past_tot_hi - ntax_after_ded.toFixed(2));
+            var prt = (past_tot_hi - ntax_after_ded) / (past_tot_hi / 100);
+            $("#savings_per").val(prt.toFixed(2));
+
         });
     </script>
 
