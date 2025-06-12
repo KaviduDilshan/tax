@@ -16,14 +16,15 @@ if ($login_pass != '' && $login_user != '') {
     if (mysqli_num_rows($result) > 0) {
         $res = mysqli_fetch_assoc($result);
         if (password_verify($login_pass, $res['a_password'])) {
-            if ($_SESSION['SecKey'] == '') {
-                $_SESSION['login'] = $res['a_id'];
+            $_SESSION['login'] = $res['a_id'];
 
-                header('Location: ../dashboard.php');
-            } else {
-
-                header('Location: ../index.php');
-            }
+            header('Location: ../dashboard.php');
+        } else {
+            header('Location: ../index.php?error=2');
         }
+    } else {
+        header('Location: ../index.php?error=2');
     }
+} else {
+    header('Location: ../index.php?error=1');
 }

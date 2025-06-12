@@ -1,19 +1,20 @@
-
 <?php
-
 include_once './conn.php';
+if (isset($_GET['error'])) {
+    $error = $_GET['error'];
+} else {
+    $error = '';
+}
 ?>
 <!doctype html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable" data-theme="default" data-theme-colors="default">
 
-
-<!-- Mirrored from themesbrand.com/velzon/html/master/auth-signin-basic.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 12 Aug 2024 06:11:16 GMT -->
 <head>
 
     <meta charset="utf-8" />
     <title>HAT ACCOUNTANTS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="tax calculator admin Panel" name="description" />
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
@@ -30,16 +31,10 @@ include_once './conn.php';
     <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
 
 </head>
-<?php
-if (isset($_GET['error'])) {
-    $error = $_GET['error'];
-} else {
-    $error = '';
-}
-?>
+
 <body>
 
-<div class="auth-page-wrapper pt-5">
+    <div class="auth-page-wrapper pt-5">
         <!-- auth page bg -->
         <div class="auth-one-bg-position auth-one-bg" id="auth-particles">
             <div class="bg-overlay"></div>
@@ -54,19 +49,6 @@ if (isset($_GET['error'])) {
         <!-- auth page content -->
         <div class="auth-page-content">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="text-center mt-sm-5 mb-4 text-white-50">
-                            <div>
-                                <!-- <h2 style="color:white;">JMK Enterprises</h2> -->
-                                <!-- <a href="index.html" class="d-inline-block auth-logo">
-                                    <img src="assets/images/logo-light.png" alt="" height="20">
-                                </a> -->
-                            </div>
-                            <!-- <p class="mt-3 fs-15 fw-medium">Premium Admin & Dashboard Template</p> -->
-                        </div>
-                    </div>
-                </div>
                 <!-- end row -->
 
                 <div class="row justify-content-center">
@@ -77,53 +59,34 @@ if (isset($_GET['error'])) {
                                 <div class="text-center mt-2">
                                     <h4 class="text-primary">HAT ACCOUNTANTS</h4>
                                     <p class="text-muted">Sign in to continue</p>
+                                    <?php if ($error != '') { ?>
+                                        <p class="text-danger">
+                                            <?php
+                                            if ($error == '1') {
+                                                echo "Please fill-in the Username and Password";
+                                            } else if ($error == '2') {
+                                                echo "Invalid Username or Password is Wrong";
+                                            } else {
+                                                echo "Somthing Went Wrong";
+                                            }
+                                            ?>
+                                        </p>
+                                    <?php } ?>
                                 </div>
-                                <div class="p-2 mt-4">
+                                <div class="p-2 mt-2">
                                     <form action="data/data_login.php" method="post">
-
-                                        <?php if ($error != '') { ?>
-                                            <div class="row">
-                                                <div id="error_display" class=" text-danger">
-                                                    <?php
-                                                    if ($error == '0') {
-
-                                                        echo "Please fill-in the Username and Password";
-                                                    } else if ($error == '1') {
-                                                        echo '<script>  swal("Invalid Username/Password", "Account not Active", "error");</script>';
-                                                        echo "Invalid Username /Password or Account not Active.";
-                                                    } else if ($error == '5') {
-                                                        echo '<script>  swal("Invalid Captha Code", "Please Try Agin", "warning");</script>';
-                                                        echo "Invalid Captha Code";
-                                                    } else if ($error == 6) {
-                                                        echo '<script>  swal("Security Alert", "Multiple Login", "warning");</script>';
-                                                        echo "Security Alert";
-                                                    }
-                                                    ?>
-                                                </div>
-                                            </div>
-                                        <?php } ?>
-
                                         <div class="mb-3">
                                             <label for="username" class="form-label">Username</label>
-                                            <input type="text"  id="a_username" name="a_username" class="form-control" placeholder="Enter username">
+                                            <input type="text" id="a_username" name="a_username" class="form-control" placeholder="Enter username">
                                         </div>
 
                                         <div class="mb-3">
-                                            <!-- <div class="float-end">
-                                                <a href="auth-pass-reset-basic.html" class="text-muted">Forgot password?</a>
-                                            </div> -->
                                             <label class="form-label" for="password-input">Password</label>
                                             <div class="position-relative auth-pass-inputgroup mb-3">
-                                                <input type="password" id="a_password"  name="a_password" class="form-control pe-5 password-input" placeholder="Enter password">
+                                                <input type="password" id="a_password" name="a_password" class="form-control pe-5 password-input" placeholder="Enter password">
                                                 <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon material-shadow-none" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
                                             </div>
                                         </div>
-
-                                        <!-- <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="auth-remember-check">
-                                            <label class="form-check-label" for="auth-remember-check">Remember me</label>
-                                        </div> -->
-
                                         <div class="mt-4">
                                             <button class="btn btn-success w-100" type="submit">LogIn</button>
                                         </div>
@@ -150,7 +113,9 @@ if (isset($_GET['error'])) {
                     <div class="col-lg-12">
                         <div class="text-center">
                             <p class="mb-0 text-muted">&copy;
-                                <script>document.write(new Date().getFullYear())</script> HAT ACCOUNTANTS. Developed by <a href="www.tritcal.com">Tritcal International (Pvt.) Ltd</a>
+                                <script>
+                                    document.write(new Date().getFullYear())
+                                </script> HAT ACCOUNTANTS. Developed by <a href="www.tritcal.com">Tritcal International (Pvt.) Ltd</a>
                             </p>
                         </div>
                     </div>
@@ -176,4 +141,5 @@ if (isset($_GET['error'])) {
     <!-- password-addon init -->
     <script src="assets/js/pages/password-addon.init.js"></script>
 </body>
+
 </html>
