@@ -24,13 +24,6 @@ if ($login_pass != '' && $login_user != '') {
 
                 header('Location: ../index.php');
             }
-        } else {
-            header('Location: ../index.php?error=1');
         }
-    } else {
-        header('Location: ../index.php?error=1');
     }
-} else {
-    header('Location: ../index.php?error=0');
 }
-

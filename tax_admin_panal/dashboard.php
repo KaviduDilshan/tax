@@ -1,12 +1,13 @@
 <?php
 session_start();
-if($_SESSION['login'] = ''){
+include_once './conn.php';
+if ($_SESSION['login'] = '') {
     header('Location: ./index.php');
 }
-include_once './conn.php';
 ?>
 <!doctype html>
-<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable" data-theme="default" data-theme-colors="default">
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg"
+    data-sidebar-image="none" data-preloader="disable" data-theme="default" data-theme-colors="default">
 
 <head>
 
@@ -15,7 +16,7 @@ include_once './conn.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Multipurpose Admin & Dashboard " name="description" />
     <meta content="" name="author" />
-    
+
 
     <!-- jsvectormap css -->
     <link href="assets/libs/jsvectormap/css/jsvectormap.min.css" rel="stylesheet" type="text/css" />
@@ -40,7 +41,7 @@ include_once './conn.php';
 </head>
 
 <body>
-    
+
     <!-- Begin page -->
     <div id="layout-wrapper">
 
@@ -71,7 +72,8 @@ include_once './conn.php';
                                     <img class="rounded-circle header-profile-user" src="assets\images\avatar5.png"
                                         alt="Header Avatar">
                                     <span class="text-start ms-xl-2">
-                                        <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">login_name</span>
+                                        <span
+                                            class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">login_name</span>
                                     </span>
                                 </span>
                             </button>
@@ -125,8 +127,8 @@ include_once './conn.php';
                     <ul class="navbar-nav" id="navbar-nav">
 
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebardashbord" data-bs-toggle="collapse" role="button"
-                                aria-expanded="false" aria-controls="sidebardashbord">
+                            <a class="nav-link menu-link" href="#sidebardashbord" data-bs-toggle="collapse"
+                                role="button" aria-expanded="false" aria-controls="sidebardashbord">
                                 <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboard">Dashboard</span>
                             </a>
                             <div class="collapse menu-dropdown" id="sidebardashbord">
@@ -159,71 +161,116 @@ include_once './conn.php';
                                     <button type="button" class="ml-1 btn btn-primary bg-gradient waves-effect waves-light" onclick="location.href = 'guarantor.php';">Add New Guarantor</button>
                                 </div> -->
                                 <div class="card-body" style="overflow: scroll;">
-                                    <table id="example23" class="table table-striped table-bordered" data-responsive="table" style="width:100%">
-                                        <thead>
+                                    <table id="example23"
+                                        class="table table-bordered table-striped align-middle text-left"
+                                        style="width:100%">
+                                        <thead class="table-light">
                                             <tr>
                                                 <th>#</th>
-                                                <th>Full Name</th>
-                                                <th>Mobile Number</th>
-                                                <th>Email</th>
-                                                <th>TIN Number</th>
+                                                <th>Client</th>
+                                                <th style="width:10%">Years</th>
                                                 <th>Employment / Salary</th>
-                                                <th>Business Net Profit</th>
-                                                <th>Interest Earned Gross(Without WHT)</th>
+                                                <th>Business Net </th>
+                                                <th>Interest Earned</th>
                                                 <th>Rent Received</th>
-                                                <th>Any Other(NET)</th>
-                                                <th>Total Eranings</th>
-                                                <th>Agreement with CEB</th>
-                                                <th>Input Tax Payments</th>
-                                                <th>APIT / PAYE</th>
+                                                <th>Any Other (NET)</th>
+                                                <th>Total Earnings</th>
+                                                <th>Solar</th>
+                                                <th>APIT/PAYE</th>
                                                 <th>WHT</th>
-                                                <th>Income Tax Quarterly Payments</th>
-                                                <th>Rates Paid to MC</th>
-                                                <th>Your Tax Payable Amount</th>
-                                                <th>Your Tax Savings Amount / %</th>
-                                                
+                                                <th>Income Tax</th>
+                                                <th>Rates to MC</th>
+                                                <th>Tax payble</th>
+                                                <th>Tax savings</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-
+                                            <?php
+                                            $i = 1;
+                                            $query = "SELECT * FROM tax ORDER BY t_id DESC";
+                                            $result = mysqli_query($con, $query);
+                                            while ($row = mysqli_fetch_array($result)) {
+                                                $c_id = $row["c_id"];
+                                                $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT * FROM `user` WHERE `c_id`=\"$c_id\""));
+                                                ?>
                                                 <tr>
-                                                   <td></td> 
-                                                   <td></td> 
-                                                   <td></td> 
-                                                   <td></td> 
-                                                   <td></td> 
+                                                    <td><?= $i++; ?></td>
+                                                    <td><?= $customer["f_name"]; ?><br><?= $customer["mobile"]; ?><br><?= $customer["email"]; ?>
+                                                    </td>
+                                                    <td><?= $row["past_yer"]; ?>
+                                                        <hr><?= $row["new_yer"]; ?>
+                                                    </td>
+                                                    <td><?= number_format($row["p_emp_slary"], 2, '.', ','); ?>
+                                                        <hr>
+                                                        <?= number_format($row["n_emp_slary"], 2, '.', ','); ?>
+                                                    </td>
 
-                                                    <td>past<br>
-                                                    new</td> 
-                                                    <td>past<br>
-                                                    new</td>
-                                                    <td>past<br>
-                                                    new</td>
-                                                    <td>past<br>
-                                                    new</td>
-                                                    <td>past<br>
-                                                    new</td>
-                                                    <td>past<br>
-                                                    new</td>
-                                                    <td>past<br>
-                                                    new</td>
-                                                    <td>past<br>
-                                                    new</td>
-                                                    <td>past<br>
-                                                    new</td>
-                                                    <td>past<br>
-                                                    new</td>
-                                                    <td>past<br>
-                                                    new</td>
-                                                    <td>past<br>
-                                                    new</td>
-                                                    <td>past<br>
-                                                    new</td>
-                                                    <td>past<br>
-                                                    new</td> 
+                                                    <td><?= number_format($row["p_bis_net"], 2, '.', ','); ?>
+                                                        <hr>
+                                                        <?= number_format($row["n_bis_net"], 2, '.', ','); ?>
+                                                    </td>
+
+                                                    <td><?= number_format($row["p_inter_ern"], 2, '.', ','); ?>
+                                                        <hr>
+                                                        <?= number_format($row["n_inter_ern"], 2, '.', ','); ?>
+                                                    </td>
+
+                                                    <td><?= number_format($row["p_rent_recived"], 2, '.', ','); ?>
+                                                        <hr>
+                                                        <?= number_format($row["n_rent_recived"], 2, '.', ','); ?>
+                                                    </td>
+
+                                                    <td><?= number_format($row["p_any_other"], 2, '.', ','); ?>
+                                                        <hr>
+                                                        <?= number_format($row["n_any_other"], 2, '.', ','); ?>
+                                                    </td>
+
+                                                    <td><?= number_format($row["p_total_ern"], 2, '.', ','); ?>
+                                                        <hr>
+                                                        <?= number_format($row["n_total_ern"], 2, '.', ','); ?>
+                                                    </td>
+
+                                                    <td><?= $row["ceb"]; ?>
+                                                        <hr>
+                                                        <?= $row["ceb_new"]; ?>
+                                                    </td>
+
+                                                    <td><?= number_format($row["p_apit_paye"], 2, '.', ','); ?>
+                                                        <hr>
+                                                        <?= number_format($row["n_apit_paye"], 2, '.', ','); ?>
+                                                    </td>
+
+                                                    <td><?= number_format($row["p_wht"], 2, '.', ','); ?>
+                                                        <hr>
+                                                        <?= number_format($row["n_wht"], 2, '.', ','); ?>
+                                                    </td>
+
+                                                    <td><?= number_format($row["p_income_tax"], 2, '.', ','); ?>
+                                                        <hr>
+                                                        <?= number_format($row["n_income_tax"], 2, '.', ','); ?>
+                                                    </td>
+
+                                                    <td><?= number_format($row["p_rates_paid"], 2, '.', ','); ?>
+                                                        <hr>
+                                                        <?= number_format($row["n_rates_paid"], 2, '.', ','); ?>
+                                                    </td>
+
+                                                    <td><?= number_format($row["p_tax_pay"], 2, '.', ','); ?>
+                                                        <hr>
+                                                        <?= number_format($row["n_tax_pay"], 2, '.', ','); ?>
+                                                    </td>
+
+                                                    <td><?= number_format($row["p_tax_sav"], 2, '.', ','); ?>
+                                                        <hr>
+                                                        <?= number_format($row["n_tax_sav"], 2, '.', ','); ?>
+                                                    </td>
                                                 </tr>
+                                                <?php
+                                            }
+                                            ?>
                                         </tbody>
                                     </table>
+
                                 </div>
                             </div>
                         </div>
@@ -231,7 +278,7 @@ include_once './conn.php';
                 </div>
             </div>
         </div>
-        
+
     </div>
 
     <!-- JAVASCRIPT -->
@@ -268,14 +315,14 @@ include_once './conn.php';
     <script src="assets/libs/datatables/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
     <script src="assets/libs/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
     <script src="assets/libs/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
-    <script src="assets/libs/datatables/datatables-init.js"></script> 
+    <script src="assets/libs/datatables/datatables-init.js"></script>
 
     <script src="js/recordaction.js" type="text/javascript"></script>
     <script src="js/custom.min.js" type="text/javascript"></script>
     <script src="js/sweetalert.min.js" type="text/javascript"></script>
     <script src="js/error_list.js" type="text/javascript"></script>
-    <script src="js/custom_admin.js" type="text/javascript"></script> 
-    
+    <script src="js/custom_admin.js" type="text/javascript"></script>
+
 
 
     <script type="text/javascript">
