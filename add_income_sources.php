@@ -16,15 +16,17 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
     <link rel="stylesheet" href="assets/css/income.css" type="text/css" />
-    <title>Form</title>
+    <title>Calculate your tax with HAT ACCOUNTANTS</title>
 </head>
 
 <body>
 
     <div class="containe">
         <div class="text-end"><small style="color:#28282b;"><?= $customer["f_name"]; ?> / <?= date("Y-m-d") ?></small></div>
-        <form  action="data/add_tax_data.php" method="post" class="mb-3">
-            <input type="text" class="pt-2 pb-2" placeholder="0.00" value="<?= $c_id; ?>" hidden />
+        <form action="data/add_tax_data.php" method="post" class="mb-3">
+            <input type="text" name="c_id" class="pt-2 pb-2" placeholder="0.00" value="<?= $c_id; ?>" hidden />
+            <input type="text" name="past_yer" class="pt-2 pb-2" placeholder="0.00" value="<?= date("Y", strtotime("-1 year")) . " / " . date("Y"); ?>" hidden />
+            <input type="text" name="new_yer" class="pt-2 pb-2" placeholder="0.00" value="<?= date("Y") . " / " . date("Y", strtotime("+1 year")); ?>" hidden />
             <h2>Input Income Sources</h2>
             <div class="row mt-2">
                 <div class="col-half">
@@ -139,7 +141,7 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
                     <input type="text" class="pt-2 pb-2 tot_er" name="past_it" id="past_it" placeholder="0.00" />
                 </div>
                 <div class="col-half">
-                    <input type="text" class="pt-2 pb-2 tot_er_n" name="new_it" id="new_it" placeholder="0.00t" />
+                    <input type="text" class="pt-2 pb-2 tot_er_n" name="new_it" id="new_it" placeholder="0.00" />
                 </div>
             </div>
             <div class="row mt-3">
@@ -173,11 +175,11 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
 
             <div class=" row mt-3 ">
                 <div class="col-6 p-2">
-                    <button type="submit"  class="btn  w-100 ">submit</button>
+                    <button type="submit" class="btn  w-100 ">Download Report</button>
                 </div>
                 <div class="col-6 p-2">
-                    <button type="submit"  class="btn  w-100 ">cancel</button>
-                </div>             
+                    <button type="submit" class="btn  w-100 ">cancel</button>
+                </div>
             </div>
         </form>
     </div>
@@ -287,14 +289,14 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
             } else {
                 var tax_pay = 0;
             }
-
-            var ceb = parseFloat($('#ceb').val());
-            if (ceb = 1) {
-                var solar_pay = 600000;
-            } else {
-                var solar_pay = 0;
-            }
-
+            $("select[name='ceb']").change(function() {
+                var ceb = parseInt($(this).val());
+                if (ceb == 1) {
+                    var solar_pay = 600000;
+                } else {
+                    var solar_pay = 0;
+                }
+            });
             var past_de1 = parseFloat($('#past_de1').val());
             if (!isNaN(past_de1)) {
                 past_de1 = past_de1;
@@ -302,8 +304,12 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
                 past_de1 = 0;
             }
 
-            var r = (past_in4 - past_de1) * (25 / 100);
-            var tot = calc - (tax_pay + solar_pay + r);
+            var r = past_in4 * (25 / 100);
+            if (calc > 1200000) {
+                var tot = calc - (tax_pay + past_de1 + r);
+            } else {
+                var tot = 0;
+            }
 
             var past_wht = parseFloat($("#past_wht").val());
             var past_it = parseFloat($('#past_it').val());
@@ -470,12 +476,14 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
                 var ntax_pay = 0;
             }
 
-            var nceb = parseFloat($('#ceb_new').val());
-            if (nceb = 1) {
-                var nsolar_pay = 600000;
-            } else {
-                var nsolar_pay = 0;
-            }
+            $("select[name='ceb_new']").change(function() {
+                var nceb = parseInt($(this).val());
+                if (nceb == 1) {
+                    var nsolar_pay = 600000;
+                } else {
+                    var nsolar_pay = 0;
+                }
+            });
 
             var new_de1 = parseFloat($('#new_de1').val());
             if (!isNaN(new_de1)) {
@@ -483,8 +491,13 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
             } else {
                 new_de1 = 0;
             }
-            var nr = (new_in4 - new_de1) * (25 / 100);
-            var ntot = calc2 - (ntax_pay + nsolar_pay + nr);
+            var nr = (new_in4) * (25 / 100);
+
+            if (calc2 > 1800000) {
+                var ntot = calc2 - (ntax_pay + nr + new_de1);
+            } else {
+                var ntot = 0;
+            }
 
             var new_wht = parseFloat($("#new_wht").val());
             var new_it = parseFloat($('#new_it').val());
@@ -553,7 +566,12 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
 
             $("#savings").val(past_tot_hi - ntax_after_ded.toFixed(2));
             var prt = (past_tot_hi - ntax_after_ded) / (past_tot_hi / 100);
-            $("#savings_per").val(prt.toFixed(2));
+            if (prt < 0) {
+                prt_ex = 0.00;
+            } else {
+                prt_ex = prt;
+            }
+            $("#savings_per").val(prt_ex.toFixed(2));
 
         });
     </script>
