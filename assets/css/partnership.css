@@ -404,7 +404,7 @@ form.sign-in-form {
 
   .btn {
     width: 310px!important;
-    margin-bottom: 0px;
+    margin-bottom: 0!important;
     font-size: 5px;
   }
 }

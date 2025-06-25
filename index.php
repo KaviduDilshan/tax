@@ -1,66 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!doctype html>
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg"
+    data-sidebar-image="none" data-preloader="disable" data-theme="default" data-theme-colors="default">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script
-    src="https://kit.fontawesome.com/64d58efce2.js"
-    crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="assets/css/form.css" />
-  <title>HAT ACCOUNTANTS</title>
+    <meta charset="utf-8" />
+    <title>HAT ACCOUNTANTS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Themesbrand" name="author" />
+    <link rel="stylesheet" href="assets/css/form.css" />
 </head>
 
 <body>
-  <div class="container">
-    <div class="forms-container">
-      <div class="signin-signup data_enter">
 
-        <form action="data/add_user_data.php" method="post" class="sign-in-form">
-          <div class="input-field">
-            <i class="fas fa-user"></i>
-            <input type="text" name="full_name" placeholder="Full name *" required />
-          </div>
-          <div class="input-field">
-            <i class="fas fa-mobile-alt"></i>
-            <input type="number" name="mobile" placeholder="Mobile number *" oninput="this.value = this.value.slice(0, 10)" required />
-          </div>
-          <div class="input-field">
-            <i class="fas fa-envelope"></i>
-            <input type="email" name="email" placeholder="Email *" required />
-          </div>
-          <div class="input-field">
-            <i class="fas fa-id-card"></i>
-            <input type="text" name="tin_number" placeholder="Tin number" />
-          </div>
-          </br></br>
-          <div>
-            <button type="submit" name="user_type" value="1" class="btn solid">Person</button>
-            <button type="submit" name="user_type" value="2" class="btn solid">Partnership</button>
-            <button type="submit" name="user_type" value="3" class="btn solid">Corporate</button>
-          </div>
-          </br>
-          <p class="social-text">Simple. Fast. Smart tax & accounts.</p>
-          </br>
-          <div>
-            <p class="company">Develop by <a href="https://tritcal.com/">Tritcal International LLC</a></p>
-          </div>
-        </form>
-      </div>
+    <div class="container">
+        <div class="forms-container">
+            <div class="signin-signup data_enter">
+
+                <form  
+                    style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;margin-top:-10%">
+
+                    <div class="d-flex justify-content-center" style="margin-top: 160px; margin-bottom: 40px;">
+                        <a  class="button-91 d-flex flex-column align-items-center text-center" href="person.php">Person
+                        </a>
+                    </div>
+
+                    <div style="margin-bottom: 40px;">
+                        <a  class="button-91 d-flex flex-column align-items-center text-center" href="partnership.php">Partnership</a>
+                    </div>
+                    <div style="margin-bottom: 25%;">
+                        <a  class="button-91 d-flex flex-column align-items-center text-center" href="corporate.php">Corporate</a>
+                    </div>
+                    <p class="social-text" style=" font-size: 18px;">Simple. Fast. Smart tax &
+                        accounts.</p>
+
+                    <div style="margin-top: 20px;">
+                        <p class="company">Developed by <a href="https://tritcal.com/">Tritcal International LLC</a></p>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
     </div>
-  </div>
 
-  <div class="panels-container">
-    <div class="panel left-panel">
-      <div class="content">
-        <h2>HAT ACCOUNTANTS</h2>
-        <h4>Tax Calculator!</h4>
-      </div>
+    <div class="panels-container">
+        <div class="panel left-panel">
+            <div class="content">
+                <h2>HAT ACCOUNTANTS</h2>
+                <h4>Tax Calculator!</h4>
+            </div>
+        </div>
     </div>
-  </div>
-  </div>
+    </div>
 
-  <script src="app.js"></script>
+
+
+
+    <!-- JS -->
+    <script src="app.js"></script>
+    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="assets/libs/node-waves/waves.min.js"></script>
+    <script src="assets/libs/feather-icons/feather.min.js"></script>
+    <script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+    <script src="assets/js/plugins.js"></script>
+    <script src="assets/libs/particles.js/particles.js"></script>
+    <script src="assets/js/pages/particles.app.js"></script>
+    <script src="assets/js/pages/password-addon.init.js"></script>
+
 </body>
 
 </html>

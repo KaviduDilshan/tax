@@ -1,7 +1,7 @@
 <?php
 include 'conn.php';
 $c_id = base64_decode($_GET["cu_id"]);
-$customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM user WHERE c_id = $c_id"));
+$customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT * FROM user WHERE c_id = $c_id"));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,9 +9,7 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script
-        src="https://kit.fontawesome.com/64d58efce2.js"
-        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <!-- Bootstrap Css -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
@@ -22,163 +20,43 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
 <body>
 
     <div class="containe">
-        <div class="text-end"><small style="color:#28282b;"><?= $customer["f_name"]; ?> / <?= date("Y-m-d") ?></small></div>
-        <form action="data/add_tax_data.php" method="post" class="mb-3">
+        <div class="text-end mt-2">
+            <h4 style="color:#28282b;"><?= $customer["partnership_name"]; ?> / <?= date("Y-m-d") ?><hr></h4>
+        </div>
+        <form action="data/add_partnership_data.php" method="post" class="mb-3">
             <input type="text" name="c_id" class="pt-2 pb-2" placeholder="0.00" value="<?= $c_id; ?>" hidden />
-            <input type="text" name="past_yer" class="pt-2 pb-2" placeholder="0.00" value="<?= date("Y", strtotime("-1 year")) . " / " . date("Y"); ?>" hidden />
-            <input type="text" name="new_yer" class="pt-2 pb-2" placeholder="0.00" value="<?= date("Y") . " / " . date("Y", strtotime("+1 year")); ?>" hidden />
-            <h2>Input Income Sources</h2>
-            <div class="row mt-2">
-                <div class="col-half">
-                    <h5 class=""><?= date("Y", strtotime("-1 year")) . " / " . date("Y"); ?></h5>
-                </div>
-                <div class="col-half">
-                    <h5 class=""><?= date("Y") . " / " . date("Y", strtotime("+1 year")); ?></h5>
-                </div>
-            </div>
-            <hr class="mt-0 pt-0" style="color:#575757;">
-            <div class="row mt-2">
-                <h4 class="mb-1">Employment / Salary</h4>
-                <div class="col-half">
-                    <input type="number" class="pt-2 pb-2 tot_er" name="past_in1" id="past_in1" placeholder="0.00" />
-                </div>
-                <div class="col-half">
-                    <input type="number" class="pt-2 pb-2 tot_er_n" name="new_in1" id="new_in1" placeholder="0.00" />
-                </div>
-            </div>
-            <div class="row mt-3">
-                <h4 class="mb-1">Business Net Profit</h4>
-                <div class="col-half">
-                    <input type="number" class="pt-2 pb-2 tot_er" name="past_in2" id="past_in2" placeholder="0.00" />
-                </div>
-                <div class="col-half">
-                    <input type="number" class="pt-2 pb-2 tot_er_n" name="new_in2" id="new_in2" placeholder="0.00" />
-                </div>
-            </div>
-            <div class="row mt-3">
-                <h4 class="mb-1">Interest Earned Gross(Without WHT)</h4>
-                <div class="col-half">
-                    <input type="number" class="pt-2 pb-2 tot_er" name="past_in3" id="past_in3" placeholder="0.00" />
-                </div>
-                <div class="col-half">
-                    <input type="number" class="pt-2 pb-2 tot_er_n" name="new_in3" id="new_in3" placeholder="0.00" />
-                </div>
-            </div>
-            <div class="row mt-3">
-                <h4 class="mb-1">Rent Received</h4>
-                <div class="col-half">
-                    <input type="number" class="pt-2 pb-2 tot_er" name="past_in4" id="past_in4" placeholder="0.00" />
-                </div>
-                <div class="col-half">
-                    <input type="number" class="pt-2 pb-2 tot_er_n" name="new_in4" id="new_in4" placeholder="0.00" />
-                </div>
-            </div>
-            <div class="row mt-3">
-                <h4 class="mb-1">Any Other(NET)</h4>
-                <div class="col-half">
-                    <input type="number" class="pt-2 pb-2 tot_er" name="past_in5" id="past_in5" placeholder="0.00" />
-                </div>
-                <div class="col-half">
-                    <input type="number" class="pt-2 pb-2 tot_er_n" name="new_in5" id="new_in5" placeholder="0.00" />
-                </div>
-            </div>
-            <div class="row mt-3">
-                <h6 class="mb-1"><b>Total Eranings</b></h6>
-                <div class="col-half">
-                    <input type="text" class="pt-2 pb-2 bg-dark-subtle" name="past_er" id="past_er" placeholder="0.00" readonly />
-                </div>
-                <div class="col-half">
-                    <input type="text" class="pt-2 pb-2 bg-dark-subtle" name="new_er" id="new_er" placeholder="0.00" readonly />
-                </div>
-            </div>
-            <div class="row mt-3 mb-2">
-                <h4 class="mb-1">You Have Agreement with CEB for Solar Energy Supply</h4>
-                <div class="col-half">
-                    <select name="ceb" id="ceb" class="pt-2 pb-2" style="width:100%;">
-                        <option value="1">Yes</option>
-                        <option value="2">No</option>
-                    </select>
-                </div>
-                <div class="col-half">
-                    <select name="ceb_new" class="pt-2 pb-2" style="width:100%;">
-                        <option value="1">Yes</option>
-                        <option value="2">No</option>
-                    </select>
+            <input type="text" name="past_yer" class="pt-2 pb-2" placeholder="0.00"
+                value="<?= date("Y", strtotime("-1 year")) . " / " . date("Y"); ?>" hidden />
+            <input type="text" name="new_yer" class="pt-2 pb-2" placeholder="0.00"
+                value="<?= date("Y") . " / " . date("Y", strtotime("+1 year")); ?>" hidden />
+
+            <div class="row  mt-3">
+                <h2 class="mb-1">Tax Year</h2>
+                <div class="col-lg-12 col-md-12">
+                     <input type="text" class="pt-2 pb-2 tot_er" name="t_year"  placeholder="2025/2026" />
                 </div>
             </div>
 
-            <h2 class="mt-4">Input Tax Payments</h2>
-            <div class="row mt-2">
-                <div class="col-half">
-                    <h5 class=""><?= date("Y", strtotime("-1 year")) . " / " . date("Y"); ?></h5>
-                </div>
-                <div class="col-half">
-                    <h5 class=""><?= date("Y") . " / " . date("Y", strtotime("+1 year")); ?></h5>
+            <div class="row  mt-3">
+                <h2 class="mb-1">Net Profit</h2>
+                <div class="col-lg-12 col-md-12">
+                     <input type="number" class="pt-2 pb-2 tot_er" name="net_profit"  placeholder="0.0%" />
                 </div>
             </div>
-            <hr class="mt-0 pt-0" style="color:#575757;">
-            <div class="row mt-2">
-                <h4 class="mb-1">APIT / PAYE</h4>
-                <div class="col-half">
-                    <input type="text" class="pt-2 pb-2 bg-dark-subtle tot_er" name="past_apit" id="past_apit" placeholder="0.00" readonly />
-                </div>
-                <div class="col-half">
-                    <input type="text" class="pt-2 pb-2 bg-dark-subtle tot_er_n" name="new_apit" id="new_apit" placeholder="0.00" readonly />
-                </div>
-            </div>
-            <div class="row mt-3">
-                <h4 class="mb-1">WHT</h4>
-                <div class="col-half">
-                    <input type="text" class="pt-2 pb-2 tot_er" name="past_wht" id="past_wht" placeholder="0.00" />
-                </div>
-                <div class="col-half">
-                    <input type="text" class="pt-2 pb-2 tot_er_n" name="new_wht" id="new_wht" placeholder="0.00" />
-                </div>
-            </div>
-            <div class="row mt-3">
-                <h4 class="mb-1">Income Tax Quarterly Payments</h4>
-                <div class="col-half">
-                    <input type="text" class="pt-2 pb-2 tot_er" name="past_it" id="past_it" placeholder="0.00" />
-                </div>
-                <div class="col-half">
-                    <input type="text" class="pt-2 pb-2 tot_er_n" name="new_it" id="new_it" placeholder="0.00" />
-                </div>
-            </div>
-            <div class="row mt-3">
-                <h4 class="mb-1">Rates Paid to MC</h4>
-                <div class="col-half">
-                    <input type="number" class="pt-2 pb-2 tot_er" name="past_de1" id="past_de1" placeholder="0.00" />
-                </div>
-                <div class="col-half">
-                    <input type="number" class="pt-2 pb-2 tot_er_n" name="new_de1" id="new_de1" placeholder="0.00" />
-                </div>
-            </div>
-            <div class="row mt-3">
-                <h6 class="mb-1"><b>Your Tax Payable Amount</b></h6>
-                <div class="col-half">
-                    <input type="text" class="pt-2 pb-2 bg-dark-subtle" name="past_tot" id="past_tot" placeholder="0.00" readonly />
-                </div>
-                <div class="col-half">
-                    <input type="text" class="pt-2 pb-2 bg-dark-subtle" name="new_tot" id="new_tot" placeholder="0.00" readonly />
-                </div>
-            </div>
-            <div class="row mt-3">
-                <h6 class="mb-1"><b>Your Tax Savings Amount / %</b></h6>
-                <div class="col-half">
-                    <input type="text" class="pt-2 pb-2 bg-dark-subtle tot_er_n" id="past_tot_hi" placeholder="0.00" readonly hidden />
-                    <input type="text" class="pt-2 pb-2 bg-dark-subtle" name="savings" id="savings" placeholder="0.00" readonly />
-                </div>
-                <div class="col-half">
-                    <input type="text" class="pt-2 pb-2 bg-dark-subtle" name="savings_per" id="savings_per" placeholder="0.00" readonly />
+
+            <div class="row  mt-3">
+                <h2 class="mb-1">Total Tax Payble</h2>
+                <div class="col-lg-12 col-md-12">
+                     <input type="number" class="pt-2 pb-2 tot_er" name="total"  placeholder="0.00" readonly/>
                 </div>
             </div>
 
             <div class=" row mt-3 ">
                 <div class="col-6 p-2">
-                    <button type="submit" class="btn  w-100 ">Download Report</button>
+                    <button type="submit" class="btn  w-100">Download Report</button>
                 </div>
                 <div class="col-6 p-2">
-                    <button type="submit" class="btn  w-100 ">cancel</button>
+                    <button type="submit" class="btn  w-100">cancel</button>
                 </div>
             </div>
         </form>
@@ -189,7 +67,7 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
     <script src="app.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
     <script>
-        $('.tot_er').on('input', function() {
+        $('.tot_er').on('input', function () {
             var past_in1 = parseFloat($("#past_in1").val());
             var past_in2 = parseFloat($('#past_in2').val());
             var past_in3 = parseFloat($('#past_in3').val());
@@ -289,7 +167,7 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
             } else {
                 var tax_pay = 0;
             }
-            $("select[name='ceb']").change(function() {
+            $("select[name='ceb']").change(function () {
                 var ceb = parseInt($(this).val());
                 if (ceb == 1) {
                     var solar_pay = 600000;
@@ -386,7 +264,7 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
         });
         // -----------------------------------------------------------------------------------
 
-        $('.tot_er_n').on('input', function() {
+        $('.tot_er_n').on('input', function () {
             var new_in1 = parseFloat($("#new_in1").val());
             var new_in2 = parseFloat($('#new_in2').val());
             var new_in3 = parseFloat($('#new_in3').val());
@@ -476,7 +354,7 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
                 var ntax_pay = 0;
             }
 
-            $("select[name='ceb_new']").change(function() {
+            $("select[name='ceb_new']").change(function () {
                 var nceb = parseInt($(this).val());
                 if (nceb == 1) {
                     var nsolar_pay = 600000;
