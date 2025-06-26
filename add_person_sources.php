@@ -9,9 +9,7 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script
-        src="https://kit.fontawesome.com/64d58efce2.js"
-        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <!-- Bootstrap Css -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
@@ -22,11 +20,17 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
 <body>
 
     <div class="containe">
-        <div class="text-end"><small style="color:#28282b;"><?= $customer["f_name"]; ?> / <?= date("Y-m-d") ?></small></div>
+        <div class="text-end mt-3">
+            <h4 style="color:#28282b;"><?= $customer["f_name"]; ?> / <?= date("Y-m-d") ?>
+                <hr>
+            </h4>
+        </div>
         <form action="data/add_person_tax.php" method="post" class="mb-3">
             <input type="text" name="c_id" class="pt-2 pb-2" placeholder="0.00" value="<?= $c_id; ?>" hidden />
-            <input type="text" name="past_yer" class="pt-2 pb-2" placeholder="0.00" value="<?= date("Y", strtotime("-1 year")) . " / " . date("Y"); ?>" hidden />
-            <input type="text" name="new_yer" class="pt-2 pb-2" placeholder="0.00" value="<?= date("Y") . " / " . date("Y", strtotime("+1 year")); ?>" hidden />
+            <input type="text" name="past_yer" class="pt-2 pb-2" placeholder="0.00"
+                value="<?= date("Y", strtotime("-1 year")) . " / " . date("Y"); ?>" hidden />
+            <input type="text" name="new_yer" class="pt-2 pb-2" placeholder="0.00"
+                value="<?= date("Y") . " / " . date("Y", strtotime("+1 year")); ?>" hidden />
             <h2>Input Income Sources</h2>
             <div class="row mt-2">
                 <div class="col-half">
@@ -85,10 +89,12 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
             <div class="row mt-3">
                 <h6 class="mb-1"><b>Total Eranings</b></h6>
                 <div class="col-half">
-                    <input type="text" class="pt-2 pb-2 bg-dark-subtle" name="past_er" id="past_er" placeholder="0.00" readonly />
+                    <input type="text" class="pt-2 pb-2 bg-dark-subtle" name="past_er" id="past_er" placeholder="0.00"
+                        readonly />
                 </div>
                 <div class="col-half">
-                    <input type="text" class="pt-2 pb-2 bg-dark-subtle" name="new_er" id="new_er" placeholder="0.00" readonly />
+                    <input type="text" class="pt-2 pb-2 bg-dark-subtle" name="new_er" id="new_er" placeholder="0.00"
+                        readonly />
                 </div>
             </div>
             <div class="row mt-3 mb-2">
@@ -120,10 +126,12 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
             <div class="row mt-2">
                 <h4 class="mb-1">APIT / PAYE</h4>
                 <div class="col-half">
-                    <input type="text" class="pt-2 pb-2 bg-dark-subtle tot_er" name="past_apit" id="past_apit" placeholder="0.00" readonly />
+                    <input type="text" class="pt-2 pb-2 bg-dark-subtle tot_er" name="past_apit" id="past_apit"
+                        placeholder="0.00" readonly />
                 </div>
                 <div class="col-half">
-                    <input type="text" class="pt-2 pb-2 bg-dark-subtle tot_er_n" name="new_apit" id="new_apit" placeholder="0.00" readonly />
+                    <input type="text" class="pt-2 pb-2 bg-dark-subtle tot_er_n" name="new_apit" id="new_apit"
+                        placeholder="0.00" readonly />
                 </div>
             </div>
             <div class="row mt-3">
@@ -156,20 +164,25 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
             <div class="row mt-3">
                 <h6 class="mb-1"><b>Your Tax Payable Amount</b></h6>
                 <div class="col-half">
-                    <input type="text" class="pt-2 pb-2 bg-dark-subtle" name="past_tot" id="past_tot" placeholder="0.00" readonly />
+                    <input type="text" class="pt-2 pb-2 bg-dark-subtle" name="past_tot" id="past_tot" placeholder="0.00"
+                        readonly />
                 </div>
                 <div class="col-half">
-                    <input type="text" class="pt-2 pb-2 bg-dark-subtle" name="new_tot" id="new_tot" placeholder="0.00" readonly />
+                    <input type="text" class="pt-2 pb-2 bg-dark-subtle" name="new_tot" id="new_tot" placeholder="0.00"
+                        readonly />
                 </div>
             </div>
             <div class="row mt-3">
                 <h6 class="mb-1"><b>Your Tax Savings Amount / %</b></h6>
                 <div class="col-half">
-                    <input type="text" class="pt-2 pb-2 bg-dark-subtle tot_er_n" id="past_tot_hi" placeholder="0.00" readonly hidden />
-                    <input type="text" class="pt-2 pb-2 bg-dark-subtle" name="savings" id="savings" placeholder="0.00" readonly />
+                    <input type="text" class="pt-2 pb-2 bg-dark-subtle tot_er_n" id="past_tot_hi" placeholder="0.00"
+                        readonly hidden />
+                    <input type="text" class="pt-2 pb-2 bg-dark-subtle" name="savings" id="savings" placeholder="0.00"
+                        readonly />
                 </div>
                 <div class="col-half">
-                    <input type="text" class="pt-2 pb-2 bg-dark-subtle" name="savings_per" id="savings_per" placeholder="0.00" readonly />
+                    <input type="text" class="pt-2 pb-2 bg-dark-subtle" name="savings_per" id="savings_per"
+                        placeholder="0.00" readonly />
                 </div>
             </div>
 
@@ -189,7 +202,7 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
     <script src="app.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
     <script>
-        $('.tot_er').on('input', function() {
+        $('.tot_er').on('input', function () {
             var past_in1 = parseFloat($("#past_in1").val());
             var past_in2 = parseFloat($('#past_in2').val());
             var past_in3 = parseFloat($('#past_in3').val());
@@ -289,7 +302,7 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
             } else {
                 var tax_pay = 0;
             }
-            $("select[name='ceb']").change(function() {
+            $("select[name='ceb']").change(function () {
                 var ceb = parseInt($(this).val());
                 if (ceb == 1) {
                     var solar_pay = 600000;
@@ -386,7 +399,7 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
         });
         // -----------------------------------------------------------------------------------
 
-        $('.tot_er_n').on('input', function() {
+        $('.tot_er_n').on('input', function () {
             var new_in1 = parseFloat($("#new_in1").val());
             var new_in2 = parseFloat($('#new_in2').val());
             var new_in3 = parseFloat($('#new_in3').val());
@@ -476,7 +489,7 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
                 var ntax_pay = 0;
             }
 
-            $("select[name='ceb_new']").change(function() {
+            $("select[name='ceb_new']").change(function () {
                 var nceb = parseInt($(this).val());
                 if (nceb == 1) {
                     var nsolar_pay = 600000;
