@@ -1,0 +1,15 @@
+
+ user table
+
+
+c_id
+f_name
+mobile
+email
+reg_date
+person_tin_number Descending 1
+partnership_name
+partnership_tin_num
+corporate_name
+corporate_tin_num
+user_type
