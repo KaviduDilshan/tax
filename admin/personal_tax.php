@@ -86,19 +86,20 @@ if ($_SESSION['login'] !== '') {
                         </div>
                         <ul class="navbar-nav" id="navbar-nav">
 
-                            <li class="nav-item">
-                                <a class="nav-link menu-link" href="#sidebardashbord" data-bs-toggle="collapse"
-                                    role="button" aria-expanded="false" aria-controls="sidebardashbord">
-                                    <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboard">Tax calculator</span>
+                            <li class="nav-item ">
+                                <a class="nav-link menu-link" href="personal_tax.php">
+                                    <i class="ri-file-line"></i> <span data-key="t-personal_tax">Personal Tax</span>
                                 </a>
-                                <div class="collapse menu-dropdown" id="sidebardashbord">
-                                    <ul class="nav nav-sm flex-column">
-                                        <li class="nav-item">
-                                            <a href="index.php" class="nav-link" data-key="t-dashboard_list">
-                                                Results List</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link menu-link" href="partnership_tax.php">
+                                    <i class="ri-file-line"></i> <span data-key="t-partnership_tax">Partnership Tax</span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link menu-link" href="corporate_tax.php">
+                                    <i class="ri-file-line"></i> <span data-key="t-corporate_tax">Corporate Tax</span>
+                                </a>
                             </li>
 
                         </ul>
@@ -124,6 +125,8 @@ if ($_SESSION['login'] !== '') {
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Client</th>
+                                                    <th>Tin Number</th>
+                                                    <th>Register Date</th>
                                                     <th style="width:10%">Years</th>
                                                     <th>Employment / Salary</th>
                                                     <th>Business Net </th>
@@ -147,12 +150,14 @@ if ($_SESSION['login'] !== '') {
                                                 $result = mysqli_query($con, $query);
                                                 while ($row = mysqli_fetch_array($result)) {
                                                     $c_id = $row["c_id"];
-                                                    $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT * FROM `user` WHERE `c_id`=\"$c_id\""));
+                                                    $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT * FROM `user` WHERE `c_id`=\"$c_id\" AND `user_type`=1"));
                                                 ?>
                                                     <tr>
                                                         <td><?= $i++; ?></td>
                                                         <td><?= $customer["f_name"]; ?><br><?= $customer["mobile"]; ?><br><?= $customer["email"]; ?>
                                                         </td>
+                                                        <td><?= $customer["person_tin_number"] ?></td>
+                                                        <td><?= $customer["reg_date"] ?></td>
                                                         <td><?= $row["past_yer"]; ?>
                                                             <hr><?= $row["new_yer"]; ?>
                                                         </td>
@@ -254,16 +259,6 @@ if ($_SESSION['login'] !== '') {
         <script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
         <script src="assets/js/plugins.js"></script>
         <script src="assets/js/app.js"></script>
-
-        <!-- Vector map-->
-        <script src="assets/libs/jsvectormap/js/jsvectormap.min.js"></script>
-        <script src="assets/libs/jsvectormap/maps/world-merc.js"></script>
-
-        <!--Swiper slider js-->
-        <script src="assets/libs/swiper/swiper-bundle.min.js"></script>
-
-        <!-- Dashboard init -->
-        <script src="assets/js/pages/dashboard-ecommerce.init.js"></script>
 
         <!-- App js -->
         <script src=" https://code.jquery.com/jquery-3.7.1.js"></script>

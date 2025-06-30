@@ -18,7 +18,7 @@ if ($login_pass != '' && $login_user != '') {
         if (password_verify($login_pass, $res['a_password'])) {
             $_SESSION['login'] = $res['a_id'];
 
-            header('Location: ../dashboard.php');
+            header('Location: ../personal_tax.php');
         } else {
             header('Location: ../index.php?error=2');
         }
