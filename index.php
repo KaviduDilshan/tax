@@ -25,7 +25,7 @@
                     style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;margin-top:-10%">
 
                     <div class="d-flex justify-content-center" style="margin-top: 160px; margin-bottom: 40px;">
-                        <a  class="button-91 d-flex flex-column align-items-center text-center" href="person.php">Person
+                        <a  class="button-91 d-flex flex-column align-items-center text-center " href="person.php">Person
                         </a>
                     </div>
 

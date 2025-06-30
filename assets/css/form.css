@@ -302,15 +302,15 @@ form.sign-in-form {
   cursor: pointer;
   width: 200px;
   height: 90px;
-  background-image: linear-gradient(to top, #D8D9DB 0%, #fff 80%, #FDFDFD 100%);
+  background-image: linear-gradient(to top, #0056b3 0%, #007bff 80%, #3399ff 100%);
   border-radius: 30px;
   border: 1px solid #8F9092;
   transition: all 0.2s ease;
   font-family: "Source Sans Pro", sans-serif;
   font-size: 20px;
   font-weight: 600;
-  color: #606060;
-  text-shadow: 0 1px #fff;
+  color: #ffffff;
+  text-decoration: none;
   
 }
 
@@ -331,6 +331,7 @@ form.sign-in-form {
     width: 300px; 
     height:120px;
     font-size: 25px;
+    
   }
 }
 
