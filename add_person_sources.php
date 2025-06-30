@@ -191,7 +191,7 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
                     <button type="submit" class="btn  w-100">Download Report</button>
                 </div>
                 <div class="col-6 p-2">
-                    <button type="submit" class="btn  w-100">cancel</button>
+                    <a href="index.php" type="reset" class="btn  w-100 p-3">cancel</a>
                 </div>
             </div>
         </form>

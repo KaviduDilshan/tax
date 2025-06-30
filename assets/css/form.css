@@ -301,8 +301,8 @@ form.sign-in-form {
   outline: none;
   cursor: pointer;
   width: 250px;
-  height: 90px;
-  background-image: linear-gradient(90deg, #1CB5E0 10%, #0a3991 100%, #061463 80%);
+  height: 100px;
+  background-image: linear-gradient(90deg, #25c2ee 10%, #0a2e91 80%, #051152 100%);
   border-radius: 30px;
   border: 1px solid #8F9092;
   transition: all 0.2s ease;
@@ -326,14 +326,14 @@ form.sign-in-form {
   box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
 }
 
-@media (min-width: 992px) {
+/* @media (min-width: 992px) {
   .button-91 {
     width: 300px; 
     height:120px;
     font-size: 25px;
     
   }
-}
+} */
 
 
 

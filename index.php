@@ -32,7 +32,7 @@
                     <div style="margin-bottom: 40px;">
                         <a  class="button-91 d-flex flex-column align-items-center text-center" href="partnership.php">Partnership</a>
                     </div>
-                    <div style="margin-bottom: 25%;">
+                    <div style="margin-bottom: 15%;">
                         <a  class="button-91 d-flex flex-column align-items-center text-center" href="corporate.php">Corporate</a>
                     </div>
                     <p class="social-text" style=" font-size: 18px;">Simple. Fast. Smart tax &
