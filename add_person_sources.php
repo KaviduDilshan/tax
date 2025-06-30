@@ -483,7 +483,7 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
                 $("#new_apit").val(apitval2.toFixed(2));
             }
 
-            if (new_in1 > 1800000) {
+            if (calc2 >= 1800000) {
                 var ntax_pay = 1800000;
             } else {
                 var ntax_pay = 0;
@@ -504,10 +504,10 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
             } else {
                 new_de1 = 0;
             }
-            var nr = (new_in4) * (25 / 100);
 
+            var nr = new_in4 * (25 / 100);
             if (calc2 > 1800000) {
-                var ntot = calc2 - (ntax_pay + nr + new_de1);
+                var ntot = calc2 - (ntax_pay + new_de1 + nr);
             } else {
                 var ntot = 0;
             }
@@ -562,7 +562,7 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
             }
 
             var ntax_after_ded = dntax + dntax3 + dntax4 + dntax5 + dntax6;
-            var payble2 = ntax_after_ded - (apitval2 + new_wht + new_it)
+            var payble2 = ntax_after_ded - (apitval2 + new_wht + new_it);
             if (payble2 > 0) {
                 $("#new_tot").val(payble2.toFixed(2));
             } else {
