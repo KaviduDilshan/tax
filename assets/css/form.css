@@ -302,7 +302,7 @@ form.sign-in-form {
   cursor: pointer;
   width: 250px;
   height: 90px;
-  background-image: linear-gradient(to top, #0056b3 0%, #007bff 80%, #3399ff 100%);
+  background-image: linear-gradient(90deg, #1CB5E0 10%, #0a3991 100%, #061463 80%);
   border-radius: 30px;
   border: 1px solid #8F9092;
   transition: all 0.2s ease;
