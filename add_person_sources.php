@@ -577,8 +577,8 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
                 past_tot_hi = 0;
             }
 
-            $("#savings").val(past_tot_hi - ntax_after_ded.toFixed(2));
-            var prt = (past_tot_hi - ntax_after_ded) / (past_tot_hi / 100);
+            $("#savings").val(ntax_after_ded - past_tot_hi.toFixed(2));
+            var prt = (ntax_after_ded - past_tot_hi) / (ntax_after_ded / 100);
             if (prt < 0) {
                 prt_ex = 0.00;
             } else {
