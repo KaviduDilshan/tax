@@ -236,69 +236,50 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
 
             var calc = past_in1 + past_in2 + past_in3 + past_in4 + past_in5;
             $("#past_er").val(calc.toFixed(2));
-            if (past_in1 >= 1200000) {
-                var apit = past_in1 - 1200000;
+            if (past_in1 >= 1800000) {
+                var apit = past_in1 - 1800000;
             } else {
                 var apit = 0;
             }
 
             if (apit > 0) {
-                if (apit <= 500000) {
+                if (apit <= 1000000) {
                     var tax = apit * (6 / 100);
-                    var tax2 = 0;
-                    var tax3 = 0;
-                    var tax4 = 0;
-                    var tax5 = 0;
-                    var tax6 = 0;
-                } else if (apit > 500000 && apit <= 1000000) {
-                    var tax = 500000 * (6 / 100);
-                    var balance = apit - 500000;
-                    var tax2 = balance * (12 / 100);
-                    var tax3 = 0;
-                    var tax4 = 0;
-                    var tax5 = 0;
-                    var tax6 = 0;
+                    var tax3 = 0, tax4 = 0, tax5 = 0, tax6 = 0;
                 } else if (apit > 1000000 && apit <= 1500000) {
-                    var tax = 500000 * (6 / 100);
-                    var tax2 = 500000 * (12 / 100);
+                    var tax = 1000000 * (6 / 100);
                     var balance = apit - 1000000;
                     var tax3 = balance * (18 / 100);
-                    var tax4 = 0;
-                    var tax5 = 0;
-                    var tax6 = 0;
+                    var tax4 = 0, tax5 = 0, tax6 = 0;
                 } else if (apit > 1500000 && apit <= 2000000) {
-                    var tax = 500000 * (6 / 100);
-                    var tax2 = 500000 * (12 / 100);
+                    var tax = 1000000 * (6 / 100);
                     var tax3 = 500000 * (18 / 100);
                     var balance = apit - 1500000;
                     var tax4 = balance * (24 / 100);
-                    var tax5 = 0;
-                    var tax6 = 0;
+                    var tax5 = 0, tax6 = 0;
                 } else if (apit > 2000000 && apit <= 2500000) {
-                    var tax = 500000 * (6 / 100);
-                    var tax2 = 500000 * (12 / 100);
+                    var tax = 1000000 * (6 / 100);
                     var tax3 = 500000 * (18 / 100);
                     var tax4 = 500000 * (24 / 100);
                     var balance = apit - 2000000;
                     var tax5 = balance * (30 / 100);
                     var tax6 = 0;
                 } else if (apit > 2500000) {
-                    var tax = 500000 * (6 / 100);
-                    var tax2 = 500000 * (12 / 100);
+                    var tax = 1000000 * (6 / 100);
                     var tax3 = 500000 * (18 / 100);
                     var tax4 = 500000 * (24 / 100);
                     var tax5 = 500000 * (30 / 100);
                     var balance = apit - 2500000;
                     var tax6 = balance * (36 / 100);
                 }
-                var apitval = tax + tax2 + tax3 + tax4 + tax5 + tax6;
+
+                var apitval = tax + tax3 + tax4 + tax5 + tax6;
                 $("#past_apit").val(apitval.toFixed(2));
             } else {
-                var apitval = 0;
-                $("#past_apit").val(apitval.toFixed(2));
+                $("#past_apit").val("0.00");
             }
-            if (calc > 1200000) {
-                var tax_pay = 1200000;
+            if (calc > 1800000) {
+                var tax_pay = 1800000;
             } else {
                 var tax_pay = 0;
             }
@@ -318,7 +299,7 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
             }
 
             var r = past_in4 * (25 / 100);
-            if (calc > 1200000) {
+            if (calc > 1800000) {
                 var tot = calc - (tax_pay + past_de1 + r);
             } else {
                 var tot = 0;
@@ -337,59 +318,46 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
                 past_it = 0;
             }
 
-            if (tot <= 500000) {
-                var dtax = tot * (6 / 100);
-                var dtax2 = 0;
-                var dtax3 = 0;
-                var dtax4 = 0;
-                var dtax5 = 0;
-                var dtax6 = 0;
-            } else if (tot > 500000 && tot <= 1000000) {
-                var dtax = 500000 * (6 / 100);
-                var balance = tot - 500000;
-                var dtax2 = balance * (12 / 100);
-                var dtax3 = 0;
-                var dtax4 = 0;
-                var dtax5 = 0;
-                var dtax6 = 0;
+            if (tot <= 1000000) {
+                var dntax = tot * (6 / 100);
+                var dntax3 = 0;
+                var dntax4 = 0;
+                var dntax5 = 0;
+                var dntax6 = 0;
             } else if (tot > 1000000 && tot <= 1500000) {
-                var dtax = 500000 * (6 / 100);
-                var dtax2 = 500000 * (12 / 100);
-                var balance = tot - 1000000;
-                var dtax3 = balance * (18 / 100);
-                var dtax4 = 0;
-                var dtax5 = 0;
-                var dtax6 = 0;
+                var dntax = 1000000 * (6 / 100);
+                var balance2 = tot - 1000000;
+                var dntax3 = balance2 * (18 / 100);
+                var dntax4 = 0;
+                var dntax5 = 0;
+                var dntax6 = 0;
             } else if (tot > 1500000 && tot <= 2000000) {
-                var dtax = 500000 * (6 / 100);
-                var dtax2 = 500000 * (12 / 100);
-                var dtax3 = 500000 * (18 / 100);
-                var balance = tot - 1500000;
-                var dtax4 = balance * (24 / 100);
-                var dtax5 = 0;
-                var dtax6 = 0;
+                var dntax = 1000000 * (6 / 100);
+                var dntax3 = 500000 * (18 / 100);
+                var balance2 = tot - 1500000;
+                var dntax4 = balance2 * (24 / 100);
+                var dntax5 = 0;
+                var dntax6 = 0;
             } else if (tot > 2000000 && tot <= 2500000) {
-                var dtax = 500000 * (6 / 100);
-                var dtax2 = 500000 * (12 / 100);
-                var dtax3 = 500000 * (18 / 100);
-                var dtax4 = 500000 * (24 / 100);
-                var balance = tot - 2000000;
-                var dtax5 = balance * (30 / 100);
-                var dtax6 = 0;
+                var dntax = 1000000 * (6 / 100);
+                var dntax3 = 500000 * (18 / 100);
+                var dntax4 = 500000 * (24 / 100);
+                var balance2 = tot - 2000000;
+                var dntax5 = balance2 * (30 / 100);
+                var dntax6 = 0;
             } else if (tot > 2500000) {
-                var dtax = 500000 * (6 / 100);
-                var dtax2 = 500000 * (12 / 100);
-                var dtax3 = 500000 * (18 / 100);
-                var dtax4 = 500000 * (24 / 100);
-                var dtax5 = 500000 * (30 / 100);
-                var balance = tot - 2500000;
-                var dtax6 = balance * (36 / 100);
+                var dntax = 1000000 * (6 / 100);
+                var dntax3 = 500000 * (18 / 100);
+                var dntax4 = 500000 * (24 / 100);
+                var dntax5 = 500000 * (30 / 100);
+                var balance2 = tot - 2500000;
+                var dntax6 = balance2 * (36 / 100);
             }
 
-            var tax_after_ded = dtax + dtax2 + dtax3 + dtax4 + dtax5 + dtax6;
-            $("#past_tot_hi").val(tax_after_ded.toFixed(2));
+            var ptax_after_ded = dntax + dntax3 + dntax4 + dntax5 + dntax6;
+            $("#past_tot_hi").val(ptax_after_ded.toFixed(2));
 
-            var payble = tax_after_ded - (apitval + past_wht + past_it);
+            var payble = ptax_after_ded - (apitval + past_wht + past_it);
             if (payble > 0) {
                 $("#past_tot").val(payble.toFixed(2));
             } else {
@@ -591,4 +559,4 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
 
 </body>
 
-</html>
+</html> 
