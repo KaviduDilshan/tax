@@ -172,7 +172,7 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
                         readonly />
                 </div>
             </div>
-            <div class="row mt-3">
+            <!-- <div class="row mt-3">
                 <h6 class="mb-1"><b>Your Tax Savings Amount / %</b></h6>
                 <div class="col-half">
                     <input type="text" class="pt-2 pb-2 bg-dark-subtle tot_er_n" id="past_tot_hi" placeholder="0.00"
@@ -184,7 +184,7 @@ $customer = mysqli_fetch_assoc(mysqli_query($con, "SELECT f_name,mobile FROM use
                     <input type="text" class="pt-2 pb-2 bg-dark-subtle" name="savings_per" id="savings_per"
                         placeholder="0.00" readonly />
                 </div>
-            </div>
+            </div> -->
 
             <div class=" row mt-3 ">
                 <div class="col-6 p-2">
