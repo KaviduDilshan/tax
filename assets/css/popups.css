@@ -1,0 +1,270 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100svh;
+  background: #fff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  position: relative;
+  overflow-x: hidden;
+  display: grid;
+  place-items: center;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+
+section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 50em;
+  margin-inline: auto;
+  gap: 3.25rem;
+  position: relative;
+  z-index: 10;
+  align-items: center;
+  padding: 5em 0;
+}
+section .card {
+  position: relative;
+  z-index: 555;
+  max-width: 38rem;
+  min-height: 20rem;
+  width: 90%;
+  display: grid;
+  place-content: center;
+  place-items: center;
+  text-align: center;
+  position: relative;
+  box-shadow: 0.063em 0.75em 1.563em rgba(35, 32, 201, 0.78);
+  border-radius: 1rem;
+}
+@media screen and (min-width: 33.75rem) {
+  section .card {
+    min-height: 15rem;
+  }
+}
+section .card-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0.8em 0.8em 0em 1.5em;
+}
+section .card-header .close {
+  color: #d9d9d9;
+  width: 1.5rem;
+  cursor: pointer;
+}
+section .card-body {
+  width: 100%;
+  padding: 0.7em 2em 0.5em 2em;
+  text-align: center;
+}
+@media screen and (min-width: 33.75rem) {
+  section .card-body {
+    display: flex;
+    text-align: unset;
+  }
+}
+section .card-body .icon {
+  width: 3rem;
+}
+@media screen and (min-width: 33.75rem) {
+  section .card-body .icon {
+    width: 4rem;
+  }
+}
+@media screen and (min-width: 33.75rem) {
+  /* section .card-body > div {
+    margin-left: 2em;
+  } */
+}
+section .card-body h3 {
+  text-align: center;
+  color: #fff;
+  font-size: 1.2rem;
+  letter-spacing: 0.035em;
+  margin-top: 0.625em;
+  margin-bottom: 0.5em;
+  font-weight: 600;
+  font-size: 30px;
+}
+section .card-body p {
+  text-align: center;
+  color: #cccccc;
+  font-size: 1rem;
+  letter-spacing: 0.031rem;
+}
+section .card .progress {
+  width: 100%;
+  margin-top: 0.938rem;
+}
+@media screen and (min-width: 33.75rem) {
+  section .card .progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+section .card .progress > div {
+  width: 100%;
+}
+section .card .progress .progress-bar {
+  position: relative;
+  width: 100%;
+  background: #363636;
+  height: 0.35rem;
+  display: block;
+  border-radius: 3.125rem;
+}
+section .card .progress .progress-bar:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  display: block;
+  border-radius: 3.125rem;
+}
+section .card .progress span:first-of-type {
+  color: #cccccc;
+  text-align: right;
+  font-weight: 600;
+  width: 100%;
+  display: block;
+  margin-bottom: 0.313rem;
+  font-size: 0.9rem;
+}
+section .card .btn-first,
+section .card .btn-second {
+  background: #123f61;
+  color: #fff;
+  border-radius: 0.25em;
+  padding: 0.5rem 1.5rem;
+  display: inline-block;
+  font-size: 0.9rem;
+}
+@media screen and (min-width: 33.75rem) {
+  section .card .btn-first,
+section .card .btn-second {
+    padding: 0.625rem 2.2rem;
+  }
+}
+section .card .btn-second {
+  margin-left: 2em;
+}
+section .blue {
+  background: linear-gradient(90deg, #1CB5E0 0%, #000851 100%);
+  opacity: 0.95;
+  transition: opacity 0.25s ease-in;
+}
+section .blue:hover {
+  opacity: 1;
+}
+section .blue .icon {
+  color: #5a81ff;
+}
+section .blue:before {
+  background: linear-gradient(45deg, #232228, #232228, #232228, #232228, #1890ff) border-box;
+}
+section .blue .progress-bar:after {
+  width: 68%;
+  background: #142e83;
+  background: linear-gradient(90deg, #1d1da3 0%, #4242cf 60%, #5a81ff 100%);
+}
+section .blue .btn-first {
+  margin-top: 1.5em;
+  margin-bottom: 1em;
+}
+@media screen and (min-width: 33.75rem) {
+  section .blue .btn-first {
+    /* margin-left: 2.5em; */
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+section .blue .btn-first:hover {
+  background: #184ab4;
+}
+section .green {
+  background: radial-gradient(ellipse at right top, #107667ed 0%, #151419 47%, #151419 100%);
+  opacity: 0.95;
+  transition: opacity 0.25s ease-in;
+}
+section .green:hover {
+  opacity: 1;
+}
+section .green .icon {
+  color: #2eea9d;
+}
+section .green .card-body {
+  align-items: flex-end;
+}
+section .green:before {
+  background: linear-gradient(45deg, #232228, #232228, #232228, #232228, #01c3a8) border-box;
+}
+section .green .progress-bar:after {
+  width: 90%;
+  background: #2eea9d;
+}
+section .green .btn-first {
+  margin-left: 0;
+}
+section .green .btn-first:hover {
+  background: #ccff00;
+  color: #111;
+}
+section .green .btn-second:hover {
+  background: #2eea9d;
+}
+section .red {
+  background: radial-gradient(ellipse at right top, #a63d2a82 0%, #151419 47%, #151419 100%);
+  opacity: 0.95;
+  transition: opacity 0.25s ease-in;
+}
+section .red:hover {
+  opacity: 1;
+}
+section .red .icon {
+  color: #fe6c9b;
+}
+section .red .card-body {
+  align-items: flex-end;
+}
+section .red:before {
+  background: linear-gradient(45deg, #232228, #232228, #232228, #232228, #a63d2a) border-box;
+}
+section .red .btn-first {
+  margin-left: 0;
+}
+section .red .btn-first:hover {
+  background: #ff6d57;
+  color: #111;
+}
+section .red .btn-second:hover {
+  background: #fe6c9b;
+}
+/* .popup_content{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    text-align: center;
+} */
+
